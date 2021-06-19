@@ -1,0 +1,141 @@
+<!---
+CASCASDING STYLE SHEET
+-css measurements are absolute or relative
+    absolute: px, in, mm, and %(of its container) //on screen measurements
+    relative: em, rem //based on font size and ???
+
+- inheritance
+    - custom classes override attribute css (ex: body{...})
+    - browsers read CSS from top to bottom in order of their declaration. That means that, in the event of a conflict, the browser will use whichever CSS declaration came last
+    - id overwrites classes
+    - inline styles will override all the CSS declarations in your style element.
+    - .pink-text {
+        color: pink !important; //signals for css not to be overwritten
+    -:root{..} is a pseudo-class selector that matches the root element of the document, usually the html element. By creating your variables in :root, they will be available globally and can be accessed from any other selector in the style sheet
+
+- colors
+    -rgb(0, 0, 0) //another way to set color outside of hex
+    -rgba(red, green, blue, opacity) //opacity is how see through it is goes from 1 (solid) to 0 (full see through)
+        -opacity can be its own standalone thing in style block
+    - var:
+        --penguin-skin: gray; //this will create a variable named --penguin-skin and assign it the value of gray. 
+            -background: var(--penguin-skin, black);); //how to use it as a reference, after comma is fall back color if cant work
+    - setting compatablilty fall back colors:
+        background: red;
+        background: var(--red-color); //remember css takes what is used last so if the browser can use the var it will, if not it will use the first
+
+- inline css changing:
+    <h2 style="color: blue;">CatPhotoApp</h2> //';' added at the end of endline style
+
+- at top of document css:
+    <style>
+        h2 { //this sets css for all h2 elements within brackets
+        color: red;
+        }
+    </style>
+
+    - css class declaration: css classes are '.classname' and are called by setting html attribute class = 'name', very reusable, can use more than once by including in same "..."
+        <style>
+        .blue-text {
+            color: blue;
+        }
+        </style>
+
+- font size & family & weight : 
+    h1 {
+  font-size: 30px;
+  font-family: sans-serif, monospace; //the coma means if san-serif fails then monospace will be used, fonts are case sensative and no quotes
+  font-weight: 600 //sets how thin or thick the font is, bigger number is thicker
+    }
+
+    - default fonts: monospace, serif and sans-serif
+
+- width and heigth example:
+    <style>
+    .smaller-image{
+      width: 100px; //sets width in pixels
+      height: 20px;
+    }
+
+- border example:
+    <style>
+    .thin-red-border {
+        border-color: red;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 10px; OR % //turns sharp corners into more rounded, the higher pixel count or % the more circle it is
+    }
+    </style>
+
+- background-color: green; //sets background background-color
+- styling an ID element has a higher priority than class, so id style will overwrite
+    - ID's are #classname in style block
+
+- padding: An element's padding controls the amount of space between the element's content and its border.
+    -When you increase the blue box's padding, it will increase the distance (padding) between the text and the border around it.
+- margin: An element's margin controls the amount of space between an element's border and surrounding elements.
+    - When you increase the blue box's margin, it will increase the distance between its border and surrounding elements.
+    -margin: auto; //auto centers it horizontally, images with margin: auto go from inline to block
+- An element's margin controls the amount of space between an element's border and surrounding elements.
+    - If you set an element's margin to a negative value, the element will grow larger.
+-CSS allows you to control the padding of all four individual sides of an element with the padding-top, padding-right, padding-bottom, and padding-left properties.
+    - applies to margin too
+    - clockwise notation: padding: 10px 20px 10px 20px; //sets top, then right, then down, then left
+        - works for margin too
+- attribute selector example: 
+        [type="checkbox"] { //for stuff with type = checkbox to apply the css in {}
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+- text align:
+        text-align: justify; causes all lines of text except the last line to meet the left and right edges of the line box.
+        text-align: center; centers the text
+        text-align: right; right-aligns the text
+        text-align: left; (the default) left-aligns the text.
+
+- text appearance:
+        strong tag: <strong>text to make bold</strong> OR font-weight: bold; in style
+        underline: <u>text to underline</u> OR text-decoration: underline;
+        italicize: <em>text to italicize</em> OR text-decoration: line-through;
+        strike through text: <s>text to strike through</s> OR text-decoration: line-through;
+
+        OR
+
+        text-transform: lowercase "transform me", uppercase	"TRANSFORM ME", capitalize "Transform Me", 
+            initial	Use the default value, inherit	Use the text-transform value from the parent element, none Default: Use the original text
+            //all the options for text-transform:
+
+- drawing horizontal lines: <hr> //self closing tag like span or br
+
+-box shadow: applies shadow to element kinda like 3d looking
+    -The box-shadow property takes values for
+        offset-x (how far to push the shadow horizontally from the element),
+        offset-y (how far to push the shadow vertically from the element),
+        blur-radius, spread-radius and color, in that order. //blur and spread is optional
+    -ex: box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); //the comma seperates the 2 boxes being created in same line
+
+- line-height: 25px; //lets spacing between lines of text like doublespace in word
+
+-psuedo class: A pseudo-class is a keyword that can be added to selectors, in order to select a specific state of the element.
+    -ex : a:hover { //when the mouse hovers over the anchor tag it will turn red, has to be seperate than normal 'a' style block
+            color: red;
+
+-CSS Box Model: css treats every html tag as its own box
+    - exception: 
+        p { //when like this (relative) it tells css to move realtive to its current position, not bound inside the box, doesnt move the other html 
+        position: relative
+        bottom: 10px; //shifts in opposite direction of what you are coding it to move so this would be 10px up
+        top:
+        left/right
+        }
+
+    -position: absolute; //locks element in place in container
+    -position: fixed; //absolute lock based on browser window, wont move when user scrolls; good for navbars
+    -float: left/right; // pushed to either the left or right of their containing parent element. It's commonly used with the width property to specify how much horizontal space the floated element requires.
+        -almost like making 2 columns for one left side and one right side
+- z-index: (some number 0-2 maybe? but whole number) //sets overlap, if the z index is higher than the other than the higher one is on top
+
+-media queries
+        -@media (max-width(or min): 100px) { /* CSS Rules */ } //when display meets the requirmenets then use those css rules
+        
+

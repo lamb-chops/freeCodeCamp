@@ -1,0 +1,97 @@
+HTML Notes
+
+1: <!-- comments out -->
+
+2: main is used for SEO and searching
+
+3: <img src="..." alt="..." > //self closing tag
+    - img must have alt attribute, used for if image fails to load
+        - best practice: left blank if decorative
+
+4: <a href = "...">Text shown</a>
+    - a is anchor, for links to outside pages or to different parts of same page
+    - text shown is the clickable links
+    - <a href = "#idName">Text displayed</a>
+        -for internal use, use # plus ID name to be referenced 
+        -id is an attribute that uniquely describes an element
+    - target="_blank" opens up link in new window
+    - href = "#" sets a dead link in case unsure what URL to put there yet or a changing url depending on js function
+
+5: nested example: 
+    <p>
+        View more <a href="https://www.freecatphotoapp.com">cat photos</a>
+    </p>
+
+6: elements into links example: <a href="#"><img src="https://www.bit.ly/fcc-running-cats" alt="Three kittens running towards the camera."></a>
+        //pic turns into dead link with text if pic doesnt load
+
+7: <ul> unordered list with <li> for list elements and <ol> for ordered list with <li> for elements //<ol> is numbered
+
+8: <input type="text"> //puts a bar for user to type stuff in
+    -self closing tag
+    - placeholder = "...." //what shows up in input bar when blank
+    - type = "radio" allows the user to pick only one option //must give name attribute
+        - <label for="indoor">  //match for name to input ID name, label is self closing
+            <input id="indoor" type="radio" name="indoor-outdoor">Indoor 
+          </label> 
+          -//if multiple labels have same name, it associates the choice made with the input submitted inside the same form attribute
+    - type = "checkbox" //allows user to make more than one choice, must be wrapped in label with matching name
+    - if no preset value attribute given for radio and checkboxes, it returns "on"
+    - adding "checked" (no parenthesis) at the end of attribute list preselects that option
+
+9: <form action="/url-where-you-want-to-submit-form-data"> //form example to submit input to server, self closing tag
+        <input>
+    </form>
+
+10: <button type="submit">text displayed on button</button> //last line in form attribute usually
+    - <input type="text" required> //requires text or whatever type it is
+
+11: div is general used container for other attributes
+
+12: - <!DOCTYPE html> //needed at top of document so browser knows what html (5 in this case) and html goes between html tags
+        <html>
+        <head>
+            <meta />
+        </head>
+        <body>
+            <div>
+            </div>
+        </body>
+        </html>
+    - Metadata elements, such as link, meta, title, and style, typically go inside the head element.
+
+13: block vs in-line: block starts on new line, takes full width, and has top/bottom margins
+        - inline only takes as much space as it needs and does not start on new line
+
+
+example:
+<h2>CatPhotoApp</h2>
+<main>
+  <p>Click here to view more <a href="#">cat photos</a>.</p>
+
+  <a href="#"><img src="https://www.bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+
+  <p>Things cats love:</p>
+  <ul>
+    <li>cat nip</li>
+    <li>laser pointers</li>
+    <li>lasagna</li>
+  </ul>
+  <p>Top 3 things cats hate:</p>
+  <ol>
+    <li>flea treatment</li>
+    <li>thunder</li>
+    <li>other cats</li>
+  </ol>
+
+  <form action="https://www.freecatphotoapp.com/submit-cat-photo">
+    <label for="indoor"><input id="indoor" type="radio" name="indoor-outdoor" value="indoor" checked> Indoor</label>
+    <label for="outdoor"><input id="outdoor" type="radio" name="indoor-outdoor" value="outdoor"> Outdoor</label><br>
+    <label for="loving"><input id="loving" type="checkbox" name="personality" value="loving" checked> Loving</label>
+    <label for="lazy"><input id="lazy" type="checkbox" name="personality" value="lazy"> Lazy</label>
+    <label for="energetic"><input id="energetic" type="checkbox" name="personality" value="energetic"> Energetic</label><br>
+    <input type="text" placeholder="cat photo URL" required>
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
